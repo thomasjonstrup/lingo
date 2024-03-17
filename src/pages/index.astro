@@ -6,7 +6,6 @@ import LanguageButton from '../components/LanguageButton.astro';
 
 const comments = await db.select().from(Comment);
 const courses = await db.select().from(Course);
-console.log('courses', courses);
 ---
 
 <Layout title='Lingo'>
