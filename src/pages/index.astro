@@ -11,7 +11,6 @@ const courses = await db.select().from(Course);
 <Layout title='Lingo'>
 	<main class='w-full'>
 		<div class='max-w-screen-lg mx-auto px-4'>
-			<h1 class='text-3xl font-bold underline'>Hello world!</h1>
 			{
 				comments.map(({ authorId, body }) => (
 					<article>
@@ -20,8 +19,12 @@ const courses = await db.select().from(Course);
 					</article>
 				))
 			}
+			<button
+				class='inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-bold text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 uppercase tracking-wide bg-green-500 text-primary-foreground hover:bg-green-500/90 border-green-600 border-b-4 active:border-b-0 h-12 px-8 w-full'
+				>Get Started</button
+			>
 		</div>
-		<footer class='w-full'>
+		<footer class='w-full border-t-2 border-slate-200 p-2'>
 			<div
 				class='max-w-screen-lg mx-auto flex items-center justify-evenly h-full px-4'
 			>
