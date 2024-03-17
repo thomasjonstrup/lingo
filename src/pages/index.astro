@@ -1,0 +1,46 @@
+---
+import { db, Comment, Course } from 'astro:db';
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+
+const comments = await db.select().from(Comment);
+const courses = await db.select().from(Course);
+---
+
+<Layout title='Welcome to Astro.'>
+	<main class='w-full'>
+		<div class='max-w-screen-lg mx-auto px-4'>
+			<h1 class='text-3xl font-bold underline'>Hello world!</h1>
+			{
+				comments.map(({ authorId, body }) => (
+					<article>
+						<p>Author: {authorId}</p>
+						<p>{body}</p>
+					</article>
+				))
+			}
+		</div>
+		<footer class='w-full'>
+			<div
+				class='max-w-screen-lg mx-auto flex items-center justify-evenly h-full px-4'
+			>
+				{
+					courses.map((course) => {
+						return (
+							<button class='flex'>
+								<Image
+									class='mr-4 rounded-md'
+									src={'/src/assets/images' + course.imageSrc}
+									width={40}
+									height={32}
+									alt={course.title}
+								/>
+								{course.title}
+							</button>
+						);
+					})
+				}
+			</div>
+		</footer>
+	</main>
+</Layout>

@@ -1,0 +1,74 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='description' content='Astro description' />
+		<meta name='viewport' content='width=device-width' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='generator' content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<div class='min-h-screen flex flex-col'>
+			<header class='h-20 w-full border-b-2 border-slate-200 px-4'>
+				<div
+					class='lg:max-w-screen-lg mx-auto flex items-center justify-between h-full'
+				>
+					<div class='flex items-center gap-x-2'>
+						<Image
+							src={`/src/assets/images/mascot.svg`}
+							height={40}
+							width={40}
+							alt='Logo'
+						/>
+						<h1
+							class='text-2xl font-extrabold text-green-600 tracking-wide'
+						>
+							Lingo
+						</h1>
+					</div>
+				</div>
+			</header>
+			<slot />
+		</div>
+	</body>
+</html>
+<!-- <style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background: #13151a;
+		background-size: 224px;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+</style> -->
