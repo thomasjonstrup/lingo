@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
+import MascotImage from '../assets/images/mascot.svg';
 ---
 
 <!doctype html>
@@ -26,7 +27,7 @@ const { title } = Astro.props;
 				>
 					<div class='flex items-center gap-x-2'>
 						<Image
-							src={`/src/assets/images/mascot.svg`}
+							src={MascotImage}
 							height={40}
 							width={40}
 							alt='Logo'

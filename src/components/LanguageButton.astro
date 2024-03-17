@@ -1,0 +1,31 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+	imagePath: string;
+	altText: string;
+	name: string;
+}
+
+const { imagePath, altText, name } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>(
+	'/src/assets/images/*.{jpeg,jpg,png,gif,svg}'
+);
+
+if (!images[imagePath])
+	throw new Error(
+		`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
+	);
+---
+
+<button class='flex'>
+	<Image
+		class='mr-4 rounded-md'
+		src={imagePath}
+		width={40}
+		height={32}
+		alt={altText}
+	/>
+	{name}
+</button>
